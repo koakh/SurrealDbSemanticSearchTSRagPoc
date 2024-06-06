@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "axios": "^1.7.1",
+    "fs-extra": "^11.2.0",
+    "graceful-fs": "^4.2.11",
+    "langchain": "^0.2.2",
+    "nanoid": "^5.0.7",
+    "ollama": "^0.5.1",
+    "p-limit": "^5.0.0",
+    "surrealdb.js": "^1.0.0-beta.8"
+  },
+  "scripts": {
+    "surreal": "surreal start --log info --allow-net --auth --user root --pass root --bind 0.0.0.0:8000 file://database",
+    "surreal:export": "surreal export --conn http://localhost:8000 --user root --pass root --ns test --db test export.surql",
+    "scrap-gutenberg": "tsx ./scrap-gutenberg.ts",
+    "import-local-fs-documents": "tsx ./import-local-fs-documents.ts",
+    "fcc-create-embeddings": "tsx ./fcc-create-embeddings.ts",
+    "semantic-search": "tsx ./semantic-search.ts"
+  },
+  "name": "surrealdbsemanticsearchbunragpoc",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "^1.1.2",
+    "@types/fs-extra": "^11.0.4",
+    "@types/graceful-fs": "^4.1.9",
+    "tsx": "^4.10.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
